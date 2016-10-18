@@ -1,0 +1,31 @@
+QUIZ
+
+Abstract :
+
+ ☐ Quiz is an easy way to link together simple quizzes
+ ☐ A question, and then (2-4?) answers can be uploaded per question
+ ☐ Uploaded has to mark which answer is correct
+ ☐ System will randomise question order, and answer order
+ ☐ Any number of questions can be stringed together to create a quiz
+ ☐ Each quiz can also have an image uploaded, and a title and descripton
+ ☐ The layout will be standardised, ala Facebook
+ ☐ The site will use a database such as Firebase to store questions
+ ☐ The site may record right/wrong answers, and total scores from players
+ ☐ Each quiz will have it's own url eg quiz.com/kanye, quiz.com/arsenal
+ ☐ Show results at end of quiz, users score (piechart), compare with previous user's answers (eg 80% got Q5 correct)
+
+
+Ideas :
+  ☐ questions can have optional time-limits imposed (30s - 1 min)
+  ☐ upload images as answers
+  ☐ upload text or numbers as answers, eg q: Where is Henry from? User taking quiz writes 'France'
+  ☐ 2 - 4 answers can be added
+  ☐ quiz setter can choose scoring system
+
+Pages :
+  ☐ Add a Quiz (on front page?)
+    ☐ Will be able to upload each question on one page
+    ☐ Already add Qs will be visable 
+  ☐ Take Quiz
+  ☐ Front page
+    ☐ Will show available quizzes, and add a quiz links
