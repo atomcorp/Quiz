@@ -29,3 +29,21 @@ Pages :
   ☐ Take Quiz
   ☐ Front page
     ☐ Will show available quizzes, and add a quiz links
+
+TASKS:
+
+Upload a new quiz: 
+  // Add a quiz to the database
+
+Show users the available quizzes:
+
+
+Take an existing quiz: 
+  - User selects the quiz they want, each quiz is assigned a unique id
+  - The program will run TakeQuiz, which gets the Q&As 
+  - Score is set up for receiving points
+  - TakeQuiz displays the the quizzes stage 1 question and answers
+  - User selects an answer TakeQuiz will assertain the points and pass on to Score
+  - 
+  4. User will select an answer
+  5. Program will store wether answer is correct or now

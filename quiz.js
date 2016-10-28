@@ -97,7 +97,7 @@ testQuestion2.assignAnswers(testAnswer2);
 // QUIZ
 //
 
-var Quiz = {
+var QuizStage = {
   creator: function(name) {
     this.creator = name;
   },
@@ -127,17 +127,17 @@ var Quiz = {
   },
   manageQuizStage: {
     setupQuizStage: function() {
-      this.quizStage = 0;
+      this.quizStageCount = 0;
     },
     increment: function() {
       console.log(this);
-      this.quizStage++;
+      this.quizStageCount++;
     },
     decrement: function() {
-      this.quizStage--;
+      this.quizStageCount--;
     },
     returnQuizStage: function() {
-      return this.quizStage;
+      return this.quizStageCount;
     }
   }
 }
