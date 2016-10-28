@@ -71,6 +71,8 @@ var Score = function() {
 var TakeQuiz = function() {
 	// give TakeQuiz a quizJSON
 
+	var quiz, currentStage;
+
 	var settings = {
 		maxQuizStages: 10,
 		minQuizStages: 1,
@@ -78,27 +80,49 @@ var TakeQuiz = function() {
 
 	}
 
-	var quiz;
+	var init = function(id) {
+		_setQuiz(id);
+	}
 
 	var _setQuiz = function() {
 		// is given quiz ID
 		// would make a call to the databse and grab the correct quiz 
 
-		// for testing there's only one quiz ot take 
+		// for testing there's only one quiz to take 
 		quiz = quizJSON;
-		console.log(quiz);
 	}
 
-	var init = function(id) {
-		_setQuiz(id);
+	var _setQuizStage = function() {
+
+		// check the quiz stage and get the correct question
+		for (var i = 0; i < quiz.quiz.length; i++) {
+			if (settings.currentQuizStage = quiz.quiz[i]) {
+				currentStage = quiz.quiz[i];
+			}
+		}
 	}
 
-	var _addStageToDOM = function() {
-		// get the q&as, and paste into page
+	var _paintQuizStage = function() {
+		var domQuestion = document.querySelectorAll('[data-update="question"]');
+		var domAnswers = document.querySelectorAll('.answers');
+		var domAnswer = document.querySelectorAll('[data-update="answer"]');
+		domQuestion[0].textContent = currentStage.question;
+		
+		console.log(currentStage.answers.length);
+
+		// how many answers are there
+		if (currentStage.answers.length > 1) {
+			for (var i = 0; i < currentStage.answers.length; i++) {
+				var createdAnswer = domAnswer[0].cloneNode(false);
+				createdAnswer.textContent = currentStage.answers[i].answer;
+				domAnswers[0].appendChild(createdAnswer);
+			}
+		}
 	}
 
 	var showQuiz = function() {
-		return quiz;
+		_setQuizStage();
+		_paintQuizStage();
 	}
 
 	return {
@@ -107,11 +131,17 @@ var TakeQuiz = function() {
 	}
 }
 
+var SetQuiz = function() {
+
+}
+
+window.test = TakeQuiz();
+
 // Invoke the module
 var myQuiz = TakeQuiz();
 
 // Pass Quiz a quiz
 myQuiz.init(1);
-myQuiz.showQuiz;
+myQuiz.showQuiz();
 // User clicks Start Quiz
 

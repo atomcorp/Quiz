@@ -3,28 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quiz</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 </head>
 <body>
-	<h1>Quiz</h1>
-	<div class="quiz">
-		<div class="user">
-			<div class="label">User</div>
-			<div data-update="user"></div>
-		</div>
-		<div class="points">
-			<div class="label">Points</div>
-			<div data-update="points"></div>
-		</div>
-		<div class="question">
-			<div class="label">Question</div>
-			<div data-update="question"></div>
-		</div>
-		<div class="answers">
-			<div class="answer">
-				<div data-update="answer"></div>
-			</div>
+<h1>Quiz</h1>
+<div class="quiz">
+	<div class="user">
+		<div class="label">User: </div>
+		<div data-update="user"></div>
+	</div>
+	<div class="points">
+		<div class="label">Points: </div>
+		<div data-update="points"></div>
+	</div>
+	<div class="question">
+		<div class="label">Question: </div>
+		<div data-update="question"></div>
+	</div>
+	<div class="answers">
+		<div class="answer">
+			<div data-update="answer">Answer: </div>
+			<button class="">Select</button>
 		</div>
 	</div>
+</div>
+
 	<script src="quiz2.js"></script>
 </body>
 </html>
