@@ -176,10 +176,7 @@
 	"buffers":
 	[
 		{
-			"contents": "QUIZ\n\nAbstract :\n\n ☐ Quiz is an easy way to link together simple quizzes\n ☐ A question, and then (2-4?) answers can be uploaded per question\n ☐ Uploaded has to mark which answer is correct\n ☐ System will randomise question order, and answer order\n ☐ Any number of questions can be stringed together to create a quiz\n ☐ Each quiz can also have an image uploaded, and a title and descripton\n ☐ The layout will be standardised, ala Facebook\n ☐ The site will use a database such as Firebase to store questions\n ☐ The site may record right/wrong answers, and total scores from players\n ☐ Each quiz will have it's own url eg quiz.com/kanye, quiz.com/arsenal\n ☐ Show results at end of quiz, users score (piechart), compare with previous user's answers (eg 80% got Q5 correct)\n\n\nIdeas :\n  ☐ questions can have optional time-limits imposed (30s - 1 min)\n  ☐ upload images as answers\n  ☐ upload text or numbers as answers, eg q: Where is Henry from? User taking quiz writes 'France'\n  ☐ 2 - 4 answers can be added\n  ☐ quiz setter can choose scoring system\n\nPages :\n  ☐ Add a Quiz (on front page?)\n    ☐ Will be able to upload each question on one page\n    ☐ Already add Qs will be visable \n  ☐ Take Quiz\n  ☐ Front page\n    ☐ Will show available quizzes, and add a quiz links\n\nTASKS:\n\nUpload a new quiz: \n  // Add a quiz to the database\n\nShow users the available quizzes:\n\n\nTake an existing quiz: \n  - User selects the quiz they want, each quiz is assigned a unique id\n  - The program will run TakeQuiz, which gets the Q&As \n  - Score is set up for receiving points\n  - TakeQuiz displays the the quizzes stage 1 question and answers\n  - User selects an answer TakeQuiz will assertain the points and pass on to Score\n  - \n  4. User will select an answer\n  5. Program will store wether answer is correct or now\n",
 			"file": "quiz.todo",
-			"file_size": 1340,
-			"file_write_time": 131212159891427535,
 			"settings":
 			{
 				"buffer_size": 1798,
@@ -188,13 +185,10 @@
 			}
 		},
 		{
-			"contents": "// Tasks\n\n// Upload a Quiz\n\n// Access a Quiz and take it\n// 1. Get \n\n\n\n'use strict';\n\nvar quizJSON = {\n\tid: 1,\n\tquiz: [\n\t\t{\n\t\t\tquizStage: 1,\n\t\t\tquestion: 'What is 1 + 1?',\n\t\t\tanswers: [\n\t\t\t\t{\n\t\t\t\t\tanswer: 1,\n\t\t\t\t\tisCorrect: false\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 2,\n\t\t\t\t\tisCorrcet: true\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 3,\n\t\t\t\t\tisCorrect: false\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 4,\n\t\t\t\t\tisCorrect: false\n\t\t\t\t}\n\t\t\t],\n\t\t\tpoints: 10\n\t\t}, \n\t\t{\n\t\t\tquizStage: 2,\n\t\t\tquestion: 'What is the capital of France?',\n\t\t\tanswers: [\n\t\t\t\t{\n\t\t\t\t\tanswer: 'Paris',\n\t\t\t\t\tisCorrect: true\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 'Madrid',\n\t\t\t\t\tisCorrcet: false\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 'Berlin',\n\t\t\t\t\tisCorrect: false\n\t\t\t\t}, {\n\t\t\t\t\tanswer: 'Lonodn',\n\t\t\t\t\tisCorrect: false\n\t\t\t\t}\n\t\t\t],\n\t\t\tpoints: 5\n\t\t}\n\t]\n}\n\nvar Score = function() {\n\t// users name\n\t// current score\n\t// questions answered correctly \n\t// create \n\t// put the score in database when complete\n\tvar settings =  {\n\n\t}\n}\n\n// Allows a user to answer questions and receive points\n// for correct answers for a Quiz\nvar TakeQuiz = function() {\n\t// give TakeQuiz a quizJSON\n\n\tvar settings = {\n\t\tmaxQuizStages: 10,\n\t\tminQuizStages: 1,\n\t\tcurrentQuizStage: 1,\n\n\t}\n\n\tvar start = function() {\n\n\t}\n\n\treturn {\n\t\tstart: start, // init quiz\n\n\t}\n}",
 			"file": "quiz2.js",
-			"file_size": 0,
-			"file_write_time": 131220758324289795,
 			"settings":
 			{
-				"buffer_size": 1214,
+				"buffer_size": 2610,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -204,6 +198,23 @@
 			"settings":
 			{
 				"buffer_size": 4247,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "quiz-module.js",
+			"settings":
+			{
+				"buffer_size": 1207,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 854,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -508,6 +519,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"for",
 			"quizStage",
 			"QuizStage",
 			"storedQuestions",
@@ -644,8 +656,8 @@
 						"selection":
 						[
 							[
-								1709,
-								1709
+								1798,
+								1363
 							]
 						],
 						"settings":
@@ -655,10 +667,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 162.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -667,15 +679,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1214,
+						"buffer_size": 2610,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1162,
-								1160
+								2358,
+								2286
 							]
 						],
 						"settings":
@@ -683,7 +695,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 840.0,
+						"translation.y": 1790.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -692,7 +704,7 @@
 				{
 					"buffer": 2,
 					"file": "quiz.js",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 4247,
@@ -702,8 +714,8 @@
 						"selection":
 						[
 							[
-								781,
-								781
+								2275,
+								2275
 							]
 						],
 						"settings":
@@ -713,10 +725,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2040.0,
+						"translation.y": 300.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "quiz-module.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								531,
+								531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								570,
+								570
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
