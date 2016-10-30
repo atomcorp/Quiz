@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"textContent"
+			],
+			[
 				"par",
 				"participant"
 			],
@@ -22,10 +26,6 @@
 			[
 				"font-",
 				"font-size"
-			],
-			[
-				"text",
-				"text-decoration"
 			],
 			[
 				"font",
@@ -188,24 +188,8 @@
 			"file": "quiz2.js",
 			"settings":
 			{
-				"buffer_size": 2610,
+				"buffer_size": 4695,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "quiz.js",
-			"settings":
-			{
-				"buffer_size": 4247,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "quiz-module.js",
-			"settings":
-			{
-				"buffer_size": 1207,
 				"line_ending": "Windows"
 			}
 		},
@@ -213,7 +197,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 854,
+				"buffer_size": 844,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -226,10 +210,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 148.0,
-		"last_filter": "javascr",
+		"height": 400.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
 			[
 				"javascr",
 				"Set Syntax: JavaScript"
@@ -354,6 +342,7 @@
 		"height": 126.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) "
 		]
@@ -373,10 +362,10 @@
 	],
 	"file_history":
 	[
-		"/C/Users/atom/sites/quiz/index.html",
-		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
 		"/C/Users/atom/sites/quiz/quiz-module.js",
 		"/C/Users/atom/sites/quiz/quiz.js",
+		"/C/Users/atom/sites/quiz/index.html",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
 		"/C/Users/atom/sites/ydkjs/this-prototype.html",
 		"/C/Users/atom/sites/ydkjs/index.html",
 		"/C/Users/atom/sites/ydkjs/scope-closure.js",
@@ -519,6 +508,22 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"currentStage.quiz",
+			"settings",
+			"_nextQuestion",
+			"nextQuestion",
+			"quizStageLength",
+			"manageQuizStages",
+			"Stage",
+			"Stahe",
+			"stage",
+			"currentQuestion",
+			"settings",
+			"currentQuizStage",
+			"answer",
+			"checkIfAnswerCorrect",
+			"getCorrectAnswer",
+			"currentStage.currentQuestion",
 			"for",
 			"quizStage",
 			"QuizStage",
@@ -679,23 +684,28 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2610,
+						"buffer_size": 4695,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2358,
-								2286
+								2284,
+								2303
+							],
+							[
+								2306,
+								2368
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1790.0,
+						"translation.y": 2220.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -703,84 +713,25 @@
 				},
 				{
 					"buffer": 2,
-					"file": "quiz.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2275,
-								2275
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 300.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "quiz-module.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1207,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								531,
-								531
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 854,
+						"buffer_size": 844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								570,
-								570
+								736,
+								736
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

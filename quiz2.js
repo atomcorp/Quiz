@@ -73,13 +73,13 @@ var TakeQuiz = function() {
 	// give TakeQuiz a quizJSON
 
 	var settings = {
+		quiz: {},
 		maxQuizStages: 10,
 		minQuizStages: 1,
-		length: 0,
+		quizLength: 0,
 	}
 
 	var currentStage = {
-		quiz: {},
 		currentQuestion: '',
 		currentCorrectAnswer: '',
 		points: 0,
@@ -129,13 +129,13 @@ var TakeQuiz = function() {
 		// would make a call to the database and grab the correct quiz 
 
 		// for testing there's only one quiz to take 
-		currentStage.quiz = quizJSON;
-		settings.length = currentStage.quiz.length;
+		settings.quiz = quizJSON;
+		settings.quizLength = settings.quiz.quiz.length;
 		elSetup.nextButton();
 	}
 
 	var _setQuizStage = function() {
-		var thisStage = currentStage.quiz.quiz;
+		var thisStage = settings.quiz.quiz;
 		// check the quiz stage and get the correct question
 		for (var i = 0; i < thisStage.length; i++) {
 			if (currentStage.position === thisStage[i].quizStage) {
@@ -179,8 +179,8 @@ var TakeQuiz = function() {
 	var _nextQuestion = function() {
 		// get current stage,
 		// is current stage + 1 more than quiz stages allowed?
-		console.log(currentStage.position);
-		if (currentStage.position === settings.length) {
+		console.log(currentStage.position, settings.quizLength);
+		if (currentStage.position === settings.quizLength) {
 			console.log('Stop quiz');
 		} else {
 			currentStage.position += 1;
