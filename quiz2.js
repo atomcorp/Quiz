@@ -77,6 +77,8 @@ var TakeQuiz = function() {
 		maxQuizStages: 10,
 		minQuizStages: 1,
 		quizLength: 0,
+		points: 0,
+		htmlComponents: ['points', 'user', 'question']
 	}
 
 	var currentStage = {
@@ -85,6 +87,32 @@ var TakeQuiz = function() {
 		points: 0,
 		position: 1,
 	}
+
+	var getHtmlComponents = {};
+
+	var _setHtmlComponents = function(html) {
+		for (var i = 0; i < html.length; i++) {
+			getHtmlComponents[html[i]] = document.querySelectorAll('[data-update="' + html[i] + '"]')[0];
+		}
+	}
+
+	// var _setHtmlComponents = {
+	// 	points: function() {
+	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="points"]')[0];
+	// 		console.log(getHtmlComponents);
+	// 	},
+	// 	user: function() {
+	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="user"]')[0];
+	// 		console.log(getHtmlComponents);
+	// 	},
+	// 	question: function() {
+	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="question"]')[0];
+	// 		console.log(getHtmlComponents);
+	// 	},
+	// 	function() {
+
+	// 	}
+	// }
 
 	var elSetup = {
 		nextButton: function() {
@@ -106,7 +134,8 @@ var TakeQuiz = function() {
 			answerContainer.dataset.update = 'answer';
 			answerContainer.dataset.id = this.config.id;
 			answerContainer.textContent = this.config.text;
-			answerContainer.addEventListener('click', _checkIfAnswerCorrect, false);
+
+			// Should just make one of these, easier to turn off
 			return answerContainer;
 		}
 	}
@@ -115,13 +144,22 @@ var TakeQuiz = function() {
 		_setQuiz(id);
 	}
 
-	var _checkIfAnswerCorrect = function() {
-		if (this.textContent === currentStage.currentCorrectAnswer) {
-			// Add the points one to the total points
-			settings.points += currentStage.points;
-		} else {
-			console.log('No');
+	var _checkIfAnswerCorrect = function(event) {
+
+		// We attach el to parent ('.answers'), 
+		// el bubble down
+		// however we make sure 
+		if (event.target.className === 'answer') {
+			if (event.target.textContent === currentStage.currentCorrectAnswer) {
+				// Add the points one to the total points
+				settings.points += currentStage.points;
+				console.log('Right');
+			} else {
+				console.log('Wrong');
+			}
+			this.removeEventListener('click', _checkIfAnswerCorrect, false);
 		}
+		
 	}
 
 	var _setQuiz = function() {
@@ -132,6 +170,8 @@ var TakeQuiz = function() {
 		settings.quiz = quizJSON;
 		settings.quizLength = settings.quiz.quiz.length;
 		elSetup.nextButton();
+		_setHtmlComponents(settings.htmlComponents);
+
 	}
 
 	var _setQuizStage = function() {
@@ -149,7 +189,6 @@ var TakeQuiz = function() {
 	}
 
 	var _getCorrectAnswer = function(answers) {
-		console.log(answers);
 		for (var i = 0; i < answers.length; i++) {
 			if (answers[i].isCorrect === true) {
 				return answers[i].answer;
@@ -161,7 +200,6 @@ var TakeQuiz = function() {
 		var domAnswersContainer = document.querySelectorAll('.answers');
 		var thisQuestion = currentStage.currentQuestion;
 		// how many answers are there
-		console.log(thisQuestion);
 		if (thisQuestion.answers.length > 1) {
 			for (var i = 0; i < thisQuestion.answers.length; i++) {
 				// var createdAnswer = domAnswer[0].cloneNode(false);
@@ -173,19 +211,27 @@ var TakeQuiz = function() {
 				var addedAnswer = domAnswersContainer[0].appendChild(addAnswer.init());
 
 			}
+			console.log(document.querySelectorAll('.answers')[0]);
+			document.querySelectorAll('.answers')[0].addEventListener('click', _checkIfAnswerCorrect, false);
 		}
+	}
+
+	var _updatePoints = function() {
+
 	}
 
 	var _nextQuestion = function() {
 		// get current stage,
 		// is current stage + 1 more than quiz stages allowed?
-		console.log(currentStage.position, settings.quizLength);
 		if (currentStage.position === settings.quizLength) {
 			console.log('Stop quiz');
 		} else {
 			currentStage.position += 1;
 			_setQuizStage();
 			_paintQuizStage();
+
+			// Update Points
+			getHtmlComponents.points.textContent = settings.points;
 		}
 	}
 
