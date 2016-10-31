@@ -19,16 +19,20 @@ var quizJSON = {
 			answers: [
 				{
 					answer: '1',
-					isCorrect: false
+					isCorrect: false,
+					id: 1
 				}, {
 					answer: '2',
-					isCorrect: true
+					isCorrect: true,
+					id: 2
 				}, {
 					answer: '3',
-					isCorrect: false
+					isCorrect: false,
+					id: 3
 				}, {
 					answer: '4',
-					isCorrect: false
+					isCorrect: false,
+					id: 4
 				}
 			],
 			points: 10
@@ -39,16 +43,20 @@ var quizJSON = {
 			answers: [
 				{
 					answer: 'Paris',
-					isCorrect: true
+					isCorrect: true,
+					id: 1
 				}, {
 					answer: 'Madrid',
-					isCorrect: false
+					isCorrect: false,
+					id: 2
 				}, {
 					answer: 'Berlin',
-					isCorrect: false
+					isCorrect: false,
+					id: 3
 				}, {
 					answer: 'London',
-					isCorrect: false
+					isCorrect: false,
+					id: 4
 				}
 			],
 			points: 5
@@ -78,41 +86,30 @@ var TakeQuiz = function() {
 		minQuizStages: 1,
 		quizLength: 0,
 		points: 0,
-		htmlComponents: ['points', 'user', 'question']
+		htmlComponents: ['points', 'player', 'question', 'answers'],
+		player: 'Default'
 	}
 
 	var currentStage = {
 		currentQuestion: '',
-		currentCorrectAnswer: '',
+		currentCorrectAnswer: '', // make this answer id
 		points: 0,
 		position: 1,
 	}
 
 	var getHtmlComponents = {};
 
+	// todo: should make this more general, or use ids
 	var _setHtmlComponents = function(html) {
 		for (var i = 0; i < html.length; i++) {
-			getHtmlComponents[html[i]] = document.querySelectorAll('[data-update="' + html[i] + '"]')[0];
+			getHtmlComponents[html[i]] = document.querySelectorAll('[data-fetch="' + html[i] + '"]');
+
+			// this means we can use elements with more than one element
+			if (getHtmlComponents[html[i]].length === 1) {
+				getHtmlComponents[html[i]] = getHtmlComponents[html[i]][0];
+			}
 		}
 	}
-
-	// var _setHtmlComponents = {
-	// 	points: function() {
-	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="points"]')[0];
-	// 		console.log(getHtmlComponents);
-	// 	},
-	// 	user: function() {
-	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="user"]')[0];
-	// 		console.log(getHtmlComponents);
-	// 	},
-	// 	question: function() {
-	// 		getHtmlComponents.points = document.querySelectorAll('[data-update="question"]')[0];
-	// 		console.log(getHtmlComponents);
-	// 	},
-	// 	function() {
-
-	// 	}
-	// }
 
 	var elSetup = {
 		nextButton: function() {
@@ -131,7 +128,7 @@ var TakeQuiz = function() {
 		init: function() {
 			var answerContainer = document.createElement('div');
 			answerContainer.className = 'answer';
-			answerContainer.dataset.update = 'answer';
+			answerContainer.dataset.fetch = 'answer';
 			answerContainer.dataset.id = this.config.id;
 			answerContainer.textContent = this.config.text;
 
@@ -150,7 +147,8 @@ var TakeQuiz = function() {
 		// el bubble down
 		// however we make sure 
 		if (event.target.className === 'answer') {
-			if (event.target.textContent === currentStage.currentCorrectAnswer) {
+			console.log(event.target.getAttribute('data-id'), currentStage.currentCorrectAnswer);
+			if (parseInt(event.target.getAttribute('data-id')) === parseInt(currentStage.currentCorrectAnswer)) {
 				// Add the points one to the total points
 				settings.points += currentStage.points;
 				console.log('Right');
@@ -171,6 +169,7 @@ var TakeQuiz = function() {
 		settings.quizLength = settings.quiz.quiz.length;
 		elSetup.nextButton();
 		_setHtmlComponents(settings.htmlComponents);
+		
 
 	}
 
@@ -180,38 +179,50 @@ var TakeQuiz = function() {
 		for (var i = 0; i < thisStage.length; i++) {
 			if (currentStage.position === thisStage[i].quizStage) {
 				currentStage.currentQuestion = thisStage[i];
-				currentStage.currentCorrectAnswer = _getCorrectAnswer(thisStage[i].answers);
+				currentStage.currentCorrectAnswer = _setCorrectAnswer(thisStage[i].answers);
 				currentStage.points = thisStage[i].points;
 				return;
 			}
 		}
-
 	}
 
-	var _getCorrectAnswer = function(answers) {
+	var _setCorrectAnswer = function(answers) {
 		for (var i = 0; i < answers.length; i++) {
 			if (answers[i].isCorrect === true) {
-				return answers[i].answer;
+				return answers[i].id;
 			}
 		}
 	}
 
+	// todo: review, and break up if needed
 	var _paintQuizStage = function() {
-		var domAnswersContainer = document.querySelectorAll('.answers');
+		var domAnswersContainer = getHtmlComponents.answers;
+		console.log(domAnswersContainer);
 		var thisQuestion = currentStage.currentQuestion;
-		// how many answers are there
+		getHtmlComponents.question.textContent = thisQuestion.question;
+
+		// if previous answers remove them
+		var answers = document.querySelectorAll(".answer");
+		if (answers.length) {
+			// was: http://stackoverflow.com/questions/13125817/how-to-remove-elements-that-were-fetched-using-queryselectorall
+			// now: http://stackoverflow.com/a/16053436
+			answers.forEach(function(answer) {
+				answer.parentNode.removeChild( answer );
+			})
+
+		}
+		// add all the answers to the page
 		if (thisQuestion.answers.length > 1) {
 			for (var i = 0; i < thisQuestion.answers.length; i++) {
-				// var createdAnswer = domAnswer[0].cloneNode(false);
-				// createdAnswer.textContent = currentQuestion.answers[i].answer;
-				// domAnswers[0].appendChild(createdAnswer);
+				// 
 				var addAnswer = Object.create(answerHtml);
 				addAnswer.config.text = thisQuestion.answers[i].answer;
-				addAnswer.config.id = i + 1;
-				var addedAnswer = domAnswersContainer[0].appendChild(addAnswer.init());
+				addAnswer.config.id = thisQuestion.answers[i].id;
+				var addedAnswer = domAnswersContainer.appendChild(addAnswer.init());
 
 			}
-			console.log(document.querySelectorAll('.answers')[0]);
+
+			// add event listeners for picking an answer
 			document.querySelectorAll('.answers')[0].addEventListener('click', _checkIfAnswerCorrect, false);
 		}
 	}
@@ -220,7 +231,14 @@ var TakeQuiz = function() {
 
 	}
 
+	var addPlayer = function(player) {
+		settings.player = player;
+		getHtmlComponents.player.textContent = settings.player;
+	}
+
 	var _nextQuestion = function() {
+		// remove previous answers
+
 		// get current stage,
 		// is current stage + 1 more than quiz stages allowed?
 		if (currentStage.position === settings.quizLength) {
@@ -229,10 +247,9 @@ var TakeQuiz = function() {
 			currentStage.position += 1;
 			_setQuizStage();
 			_paintQuizStage();
-
-			// Update Points
-			getHtmlComponents.points.textContent = settings.points;
 		}
+		// Update Points
+		getHtmlComponents.points.textContent = settings.points;
 	}
 
 	var _manageQuizState = function() {
@@ -251,7 +268,8 @@ var TakeQuiz = function() {
 
 	return {
 		init: init, // init quiz
-		showQuiz: showQuiz
+		showQuiz: showQuiz,
+		addPlayer: addPlayer
 	}
 }
 
@@ -259,13 +277,12 @@ var SetQuiz = function() {
 
 }
 
-window.test = TakeQuiz();
-
 // Invoke the module
 var myQuiz = TakeQuiz();
 
 // Pass Quiz a quiz
 myQuiz.init(1);
+myQuiz.addPlayer('Tom');
 myQuiz.showQuiz();
 // User clicks Start Quiz
 

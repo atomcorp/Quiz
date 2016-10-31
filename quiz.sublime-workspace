@@ -188,7 +188,7 @@
 			"file": "quiz2.js",
 			"settings":
 			{
-				"buffer_size": 4695,
+				"buffer_size": 6420,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -197,7 +197,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 844,
+				"buffer_size": 833,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -211,9 +211,13 @@
 	"command_palette":
 	{
 		"height": 400.0,
-		"last_filter": "",
+		"last_filter": "insta",
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"pack",
 				"Preferences: Browse Packages"
@@ -233,10 +237,6 @@
 			[
 				"remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"task",
@@ -508,6 +508,22 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"init",
+			"htmlComponents",
+			"getHtmlComponents",
+			"htmlComponents",
+			"_setQuiz",
+			"_setHtmlComponents",
+			"update",
+			"settings.htmlComponents",
+			"_getCorrectAnswer",
+			"_checkIfAnswerCorrect",
+			"_setHtmlComponents",
+			"document",
+			"_setHtmlComponents",
+			"setHtmlComponents",
+			"elSetup",
+			"htmlComponents",
 			"currentStage.quiz",
 			"settings",
 			"_nextQuestion",
@@ -619,14 +635,7 @@
 			"date",
 			"RokkittRegular",
 			"preview",
-			"prev",
-			"firefox",
-			".slide_contact",
-			"Xmas",
-			"Presents",
-			"Find",
-			"2013",
-			"Finalise"
+			"prev"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -667,7 +676,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PlainTasks/PlainTasks.sublime-syntax",
+							"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -684,19 +694,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4695,
+						"buffer_size": 6420,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2284,
-								2303
-							],
-							[
-								2306,
-								2368
+								3085,
+								3085
 							]
 						],
 						"settings":
@@ -705,7 +711,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2220.0,
+						"translation.y": 2430.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -717,15 +723,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 844,
+						"buffer_size": 833,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								736,
-								736
+								450,
+								450
 							]
 						],
 						"settings":
