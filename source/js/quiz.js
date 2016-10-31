@@ -7,7 +7,7 @@
 
 
 
-'use strict';
+"use strict";
 
 var quizJSON = {
 	id: 1,
@@ -62,7 +62,7 @@ var quizJSON = {
 			points: 5
 		}
 	]
-}
+};
 
 var Score = function() {
 	// users name
@@ -73,7 +73,7 @@ var Score = function() {
 	var settings =  {
 
 	}
-}
+};
 
 // Allows a user to answer questions and receive points
 // for correct answers for a Quiz
@@ -88,14 +88,14 @@ var TakeQuiz = function() {
 		points: 0,
 		htmlComponents: ['points', 'player', 'question', 'answers'],
 		player: 'Default'
-	}
+	};
 
 	var currentStage = {
 		currentQuestion: '',
 		currentCorrectAnswer: '', // make this answer id
 		points: 0,
 		position: 1,
-	}
+	};
 
 	var getHtmlComponents = {};
 
@@ -109,14 +109,14 @@ var TakeQuiz = function() {
 				getHtmlComponents[html[i]] = getHtmlComponents[html[i]][0];
 			}
 		}
-	}
+	};
 
 	var elSetup = {
 		nextButton: function() {
 			var nextButton = document.getElementById('next');
 			nextButton.addEventListener('click', _nextQuestion, false);
 		}
-	}
+	};
 
 	// http://stackoverflow.com/questions/18534314/reuse-elements-of-html
 	var answerHtml = {
@@ -135,11 +135,11 @@ var TakeQuiz = function() {
 			// Should just make one of these, easier to turn off
 			return answerContainer;
 		}
-	}
+	};
 
 	var init = function(id) {
 		_setQuiz(id);
-	}
+	};
 
 	var _checkIfAnswerCorrect = function(event) {
 
@@ -147,18 +147,21 @@ var TakeQuiz = function() {
 		// el bubble down
 		// however we make sure 
 		if (event.target.className === 'answer') {
-			console.log(event.target.getAttribute('data-id'), currentStage.currentCorrectAnswer);
 			if (parseInt(event.target.getAttribute('data-id')) === parseInt(currentStage.currentCorrectAnswer)) {
 				// Add the points one to the total points
 				settings.points += currentStage.points;
+				event.target.className += ' correct';
 				console.log('Right');
 			} else {
+				event.target.className += ' incorrect';
 				console.log('Wrong');
 			}
 			this.removeEventListener('click', _checkIfAnswerCorrect, false);
+			// Update Points
+			getHtmlComponents.points.textContent = settings.points;
 		}
 		
-	}
+	};
 
 	var _setQuiz = function() {
 		// is given quiz ID
@@ -171,7 +174,7 @@ var TakeQuiz = function() {
 		_setHtmlComponents(settings.htmlComponents);
 		
 
-	}
+	};
 
 	var _setQuizStage = function() {
 		var thisStage = settings.quiz.quiz;
@@ -184,7 +187,7 @@ var TakeQuiz = function() {
 				return;
 			}
 		}
-	}
+	};
 
 	var _setCorrectAnswer = function(answers) {
 		for (var i = 0; i < answers.length; i++) {
@@ -192,7 +195,7 @@ var TakeQuiz = function() {
 				return answers[i].id;
 			}
 		}
-	}
+	};
 
 	// todo: review, and break up if needed
 	var _paintQuizStage = function() {
@@ -225,16 +228,16 @@ var TakeQuiz = function() {
 			// add event listeners for picking an answer
 			document.querySelectorAll('.answers')[0].addEventListener('click', _checkIfAnswerCorrect, false);
 		}
-	}
+	};
 
 	var _updatePoints = function() {
 
-	}
+	};
 
 	var addPlayer = function(player) {
 		settings.player = player;
 		getHtmlComponents.player.textContent = settings.player;
-	}
+	};
 
 	var _nextQuestion = function() {
 		// remove previous answers
@@ -248,9 +251,8 @@ var TakeQuiz = function() {
 			_setQuizStage();
 			_paintQuizStage();
 		}
-		// Update Points
-		getHtmlComponents.points.textContent = settings.points;
-	}
+		
+	};
 
 	var _manageQuizState = function() {
 		// get how many quiz stages
@@ -259,18 +261,18 @@ var TakeQuiz = function() {
 		// next question el
 
 		// start quiz
-	}
+	};
 
 	var showQuiz = function() {
 		_setQuizStage();
 		_paintQuizStage();
-	}
+	};
 
 	return {
 		init: init, // init quiz
 		showQuiz: showQuiz,
 		addPlayer: addPlayer
-	}
+	};
 }
 
 var SetQuiz = function() {

@@ -3,27 +3,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quiz</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="dist/css.css">
 </head>
 <body>
-<h1>Quiz</h1>
-<div class="quiz">
+<div class="header">
+	<h1>Quiz</h1>
+</div>
+<div class="player-info">
 	<div class="player">
 		<div class="label">Player: </div>
 		<div data-fetch="player"></div>
-	</div>
-	<div class="points">
+	</div><div class="points">
 		<div class="label">Points: </div>
-		<div data-fetch="points"></div>
+		<div data-fetch="points">0</div>
 	</div>
+</div>
+<div class="quiz">
 	<div class="question">
 		<div class="label">Question: </div>
 		<div data-fetch="question"></div>
 	</div>
-	<div class="answers" data-fetch="answers"></div>
-	<button id="next" data-fetch="next" class="">Next question</button>
+	<div class="answers" data-fetch="answers">
+		<div class="label">Answers: </div>
+	</div>
+	<button id="next" data-fetch="next" class="next">Next question</button>
 </div>
 
-	<script src="quiz2.js"></script>
+	<script src="/dist/js.js"></script>
 </body>
 </html>

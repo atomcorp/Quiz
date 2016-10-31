@@ -176,28 +176,38 @@
 	"buffers":
 	[
 		{
-			"file": "quiz.todo",
-			"settings":
-			{
-				"buffer_size": 1798,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "quiz2.js",
-			"settings":
-			{
-				"buffer_size": 6420,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 833,
+				"buffer_size": 663,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/sass/3rd-party/normalize.scss",
+			"settings":
+			{
+				"buffer_size": 8052,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "/*! normalize.css v5.0.0 | MIT License | github.co"
+			}
+		},
+		{
+			"file": "source/sass/css.scss",
+			"settings":
+			{
+				"buffer_size": 52,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 2780,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -211,9 +221,17 @@
 	"command_palette":
 	{
 		"height": 400.0,
-		"last_filter": "insta",
+		"last_filter": "inst",
 		"selected_items":
 		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"GitGutter: Compare Against Commit"
+			],
 			[
 				"insta",
 				"Package Control: Install Package"
@@ -269,10 +287,6 @@
 			[
 				"java",
 				"Set Syntax: JavaScript"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			],
 			[
 				"Snippet: ",
@@ -335,7 +349,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 424.0
+		"width": 440.0
 	},
 	"console":
 	{
@@ -358,13 +372,32 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/atom/sites/quiz"
+		"/C/Users/atom/sites/quiz",
+		"/C/Users/atom/sites/quiz/dist",
+		"/C/Users/atom/sites/quiz/source",
+		"/C/Users/atom/sites/quiz/source/js",
+		"/C/Users/atom/sites/quiz/source/sass",
+		"/C/Users/atom/sites/quiz/source/sass/3rd-party"
 	],
 	"file_history":
 	[
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/StatusBarFileSize/StatusBarFileSize.sublime-settings",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/User/StatusBarFileSize.sublime-settings",
+		"/C/Users/atom/sites/quiz/source/sass/css.scss",
+		"/C/Users/atom/sites/quiz/dist/all.js",
+		"/C/Users/atom/sites/quiz/index.html",
+		"/C/Users/atom/sites/quiz/gulpfile.js",
+		"/C/Users/atom/sites/quiz/source/js/main.js",
+		"/C/Users/atom/sites/quiz/source/sass/main.scss",
+		"/C/Users/atom/sites/quiz/source/sass/_take-quiz.scss",
+		"/C/Users/atom/sites/quiz/source/js/quiz.js",
+		"/C/Users/atom/sites/quiz/package.json",
+		"/C/Users/atom/sites/quiz/quiz.todo",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
+		"/C/Users/atom/sites/quiz/src/js/quiz.js",
+		"/C/Users/atom/sites/quiz/.gitignore",
 		"/C/Users/atom/sites/quiz/quiz-module.js",
 		"/C/Users/atom/sites/quiz/quiz.js",
-		"/C/Users/atom/sites/quiz/index.html",
 		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
 		"/C/Users/atom/sites/ydkjs/this-prototype.html",
 		"/C/Users/atom/sites/ydkjs/index.html",
@@ -444,7 +477,6 @@
 		"/C/xampp/htdocs/experiments/gulp_test/dist/all.min.js",
 		"/C/Users/atom/Life/Work/web/experiments/jquery-1.11.2.min.js",
 		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
-		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
 		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/index.php",
 		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
@@ -476,20 +508,7 @@
 		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/post-formats/format-link.php",
 		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/header.php",
 		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/sidebar.php",
-		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/archive.php",
-		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/footer.php",
-		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/taxonomy-custom_cat.php",
-		"/C/xampp/htdocs/bookstart/bookstart.sublime-project",
-		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/page-custom.php",
-		"/C/xampp/htdocs/jsbook/cs07/example.html",
-		"/C/xampp/htdocs/jsbook/cs07/js/js.js",
-		"/C/Users/atom/Life/Work/web/experiments/changeTextToShapes/swapTextToShapes.js",
-		"/C/xampp/htdocs/bookstart/js/js2.js",
-		"/C/xampp/htdocs/bookstart/js/moveViewpoint.js",
-		"/C/xampp/htdocs/bookstart/js/amendHeight.js",
-		"/C/xampp/htdocs/koken/words/short.php",
-		"/C/xampp/htdocs/koken/words/test.php",
-		"/C/Users/atom/Life/Work/web/experiments/full page/index.html"
+		"/C/xampp/htdocs/wp_portfolio/wp-content/themes/bones/archive.php"
 	],
 	"find":
 	{
@@ -508,6 +527,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"document",
 			"init",
 			"htmlComponents",
 			"getHtmlComponents",
@@ -634,8 +654,7 @@
 			"month",
 			"date",
 			"RokkittRegular",
-			"preview",
-			"prev"
+			"preview"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -654,84 +673,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "quiz.todo",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1798,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1798,
-								1363
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "quiz2.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6420,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3085,
-								3085
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2430.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 833,
+						"buffer_size": 663,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								450,
-								450
+								269,
+								269
 							]
 						],
 						"settings":
@@ -743,7 +702,96 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/sass/3rd-party/normalize.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7628,
+								7628
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/*! normalize.css v5.0.0 | MIT License | github.co",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3940.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/sass/css.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 52,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								52,
+								52
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2780,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/Gulpfile JS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
