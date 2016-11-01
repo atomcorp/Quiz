@@ -20,6 +20,11 @@
 	</div>
 </div>
 <div class="quiz">
+	<div class="stage">
+		<div data-fetch="current-stage"></div>
+		<span> of </span>
+		<div data-fetch="no-of-stages"></div>
+	</div>
 	<div class="question">
 		<div class="label">Question: </div>
 		<div data-fetch="question"></div>
@@ -29,6 +34,8 @@
 	</div>
 	<button id="next" data-fetch="next" class="next">Next question</button>
 </div>
+
+<button id="restart">Restart</button>
 
 	<script src="/dist/js.js"></script>
 </body>

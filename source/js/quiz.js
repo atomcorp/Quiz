@@ -60,6 +60,30 @@ var quizJSON = {
 				}
 			],
 			points: 5
+		}, 
+		{
+			quizStage: 3,
+			question: 'Who is Arsenal\'s historic top scorer?',
+			answers: [
+				{
+					answer: 'Denis Bergkamp',
+					isCorrect: false,
+					id: 1
+				}, {
+					answer: 'Ian Wright',
+					isCorrect: false,
+					id: 2
+				}, {
+					answer: 'Robin van Persie',
+					isCorrect: false,
+					id: 3
+				}, {
+					answer: 'Thierry Henry',
+					isCorrect: true,
+					id: 4
+				}
+			],
+			points: 5
 		}
 	]
 };
@@ -86,7 +110,8 @@ var TakeQuiz = function() {
 		minQuizStages: 1,
 		quizLength: 0,
 		points: 0,
-		htmlComponents: ['points', 'player', 'question', 'answers'],
+		// make this use document, find the selectors below
+		htmlComponents: ['points', 'player', 'question', 'answers', 'current-stage', 'no-of-stages', 'next'],
 		player: 'Default'
 	};
 
@@ -111,13 +136,21 @@ var TakeQuiz = function() {
 		}
 	};
 
+	var _updateQuizProgress = function() {
+		console.log(currentStage);
+		getHtmlComponents['current-stage'].textContent = currentStage.position;
+		getHtmlComponents['no-of-stages'].textContent = settings.quizLength;
+	}
+
+
 	var elSetup = {
 		nextButton: function() {
-			var nextButton = document.getElementById('next');
+			var nextButton = getHtmlComponents.next;
 			nextButton.addEventListener('click', _nextQuestion, false);
 		}
 	};
 
+	// This creates the .answer html containers
 	// http://stackoverflow.com/questions/18534314/reuse-elements-of-html
 	var answerHtml = {
 		config: {
@@ -156,6 +189,8 @@ var TakeQuiz = function() {
 				event.target.className += ' incorrect';
 				console.log('Wrong');
 			}
+
+			// remove el so clicking it doesn't so anything anymore
 			this.removeEventListener('click', _checkIfAnswerCorrect, false);
 			// Update Points
 			getHtmlComponents.points.textContent = settings.points;
@@ -166,14 +201,11 @@ var TakeQuiz = function() {
 	var _setQuiz = function() {
 		// is given quiz ID
 		// would make a call to the database and grab the correct quiz 
-
 		// for testing there's only one quiz to take 
 		settings.quiz = quizJSON;
 		settings.quizLength = settings.quiz.quiz.length;
-		elSetup.nextButton();
 		_setHtmlComponents(settings.htmlComponents);
-		
-
+		elSetup.nextButton();
 	};
 
 	var _setQuizStage = function() {
@@ -200,24 +232,24 @@ var TakeQuiz = function() {
 	// todo: review, and break up if needed
 	var _paintQuizStage = function() {
 		var domAnswersContainer = getHtmlComponents.answers;
-		console.log(domAnswersContainer);
 		var thisQuestion = currentStage.currentQuestion;
 		getHtmlComponents.question.textContent = thisQuestion.question;
-
+		_updateQuizProgress();
 		// if previous answers remove them
 		var answers = document.querySelectorAll(".answer");
 		if (answers.length) {
+
 			// was: http://stackoverflow.com/questions/13125817/how-to-remove-elements-that-were-fetched-using-queryselectorall
 			// now: http://stackoverflow.com/a/16053436
 			answers.forEach(function(answer) {
 				answer.parentNode.removeChild( answer );
-			})
+			});
 
 		}
+
 		// add all the answers to the page
 		if (thisQuestion.answers.length > 1) {
 			for (var i = 0; i < thisQuestion.answers.length; i++) {
-				// 
 				var addAnswer = Object.create(answerHtml);
 				addAnswer.config.text = thisQuestion.answers[i].answer;
 				addAnswer.config.id = thisQuestion.answers[i].id;
@@ -226,7 +258,7 @@ var TakeQuiz = function() {
 			}
 
 			// add event listeners for picking an answer
-			document.querySelectorAll('.answers')[0].addEventListener('click', _checkIfAnswerCorrect, false);
+			domAnswersContainer.addEventListener('click', _checkIfAnswerCorrect, false);
 		}
 	};
 
@@ -246,12 +278,12 @@ var TakeQuiz = function() {
 		// is current stage + 1 more than quiz stages allowed?
 		if (currentStage.position === settings.quizLength) {
 			console.log('Stop quiz');
+			endQuiz();
 		} else {
 			currentStage.position += 1;
 			_setQuizStage();
 			_paintQuizStage();
 		}
-		
 	};
 
 	var _manageQuizState = function() {
@@ -268,16 +300,34 @@ var TakeQuiz = function() {
 		_paintQuizStage();
 	};
 
+	var endQuiz = function() {
+		// remove button
+		getHtmlComponents.next.textContent = 'Complete quiz';
+	}
+
+	// for debugging
+	var restartQuiz = function() {
+		var restartId = document.getElementById('restart');
+		restartId.addEventListener('click', run, false);
+		function run() {
+			currentStage.position = 1;
+			_setQuizStage();
+			_paintQuizStage();
+			getHtmlComponents.points.textContent = 0;
+		}
+	};
+
 	return {
 		init: init, // init quiz
 		showQuiz: showQuiz,
-		addPlayer: addPlayer
+		addPlayer: addPlayer,
+		restartQuiz: restartQuiz,
 	};
 }
 
 var SetQuiz = function() {
-
-}
+	
+};
 
 // Invoke the module
 var myQuiz = TakeQuiz();
@@ -286,5 +336,6 @@ var myQuiz = TakeQuiz();
 myQuiz.init(1);
 myQuiz.addPlayer('Tom');
 myQuiz.showQuiz();
+myQuiz.restartQuiz();
 // User clicks Start Quiz
 

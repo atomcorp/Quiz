@@ -1,7 +1,8 @@
 // Header
 .header {
 	padding: 15px;
-	border-bottom: 1px solid #333;
+	border-bottom: 15px solid #131716;
+	background: #ddb01f;
 }
 
 
@@ -34,6 +35,14 @@
 // Quiz
 .question {
 	padding: 15px;
+}
+
+.stage {
+	padding: 15px;
+	> div {
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 .answers {

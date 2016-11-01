@@ -21,6 +21,9 @@ Ideas :
   ☐ upload text or numbers as answers, eg q: Where is Henry from? User taking quiz writes 'France'
   ☐ 2 - 4 answers can be added
   ☐ quiz setter can choose scoring system
+  ☐ Show quiz progress - such as 4/10
+  ☐ restart button for debugging
+  ☐ transition between questions - swipe or transition animation to show something happened, then q&a have changed
 
 Pages :
   ☐ Add a Quiz (on front page?)
