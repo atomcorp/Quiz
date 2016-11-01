@@ -5,13 +5,13 @@
 // Access a Quiz and take it
 // 1. Get 
 
-
+var database = firebase.database();
 
 "use strict";
 
 var quizJSON = {
 	id: 1,
-	quiz: [
+	quizStages: [
 		{
 			quizStage: 1,
 			question: 'What is 1 + 1?',
@@ -137,7 +137,6 @@ var TakeQuiz = function() {
 	};
 
 	var _updateQuizProgress = function() {
-		console.log(currentStage);
 		getHtmlComponents['current-stage'].textContent = currentStage.position;
 		getHtmlComponents['no-of-stages'].textContent = settings.quizLength;
 	}
@@ -198,18 +197,25 @@ var TakeQuiz = function() {
 		
 	};
 
-	var _setQuiz = function() {
+	var _setQuiz = function(id) {
 		// is given quiz ID
+		database.ref('/quiz/' + id).once('value').then(function(snapshot) {
+			console.log(snapshot.val());
+			settings.quiz = snapshot.val();
+			settings.quizLength = settings.quiz.quizStages.length;
+			_setHtmlComponents(settings.htmlComponents);
+			elSetup.nextButton();
+		}).then(function() {
+			// do something smarter than this
+			doThis();
+		});
 		// would make a call to the database and grab the correct quiz 
 		// for testing there's only one quiz to take 
-		settings.quiz = quizJSON;
-		settings.quizLength = settings.quiz.quiz.length;
-		_setHtmlComponents(settings.htmlComponents);
-		elSetup.nextButton();
+		
 	};
 
 	var _setQuizStage = function() {
-		var thisStage = settings.quiz.quiz;
+		var thisStage = settings.quiz.quizStages;
 		// check the quiz stage and get the correct question
 		for (var i = 0; i < thisStage.length; i++) {
 			if (currentStage.position === thisStage[i].quizStage) {
@@ -313,6 +319,7 @@ var TakeQuiz = function() {
 			currentStage.position = 1;
 			_setQuizStage();
 			_paintQuizStage();
+			settings.points = 0;
 			getHtmlComponents.points.textContent = 0;
 		}
 	};
@@ -333,9 +340,13 @@ var SetQuiz = function() {
 var myQuiz = TakeQuiz();
 
 // Pass Quiz a quiz
-myQuiz.init(1);
-myQuiz.addPlayer('Tom');
-myQuiz.showQuiz();
-myQuiz.restartQuiz();
+myQuiz.init('quiz/-KVX4PQehuonYO_dA4hG');
+
+function doThis() {
+	myQuiz.addPlayer('Tom');
+	myQuiz.showQuiz();
+	myQuiz.restartQuiz();
+
+}
 // User clicks Start Quiz
 
