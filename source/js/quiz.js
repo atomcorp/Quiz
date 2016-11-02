@@ -102,7 +102,7 @@ var Score = function() {
 // Allows a user to answer questions and receive points
 // for correct answers for a Quiz
 var TakeQuiz = function() {
-	// give TakeQuiz a quizJSON
+	// SET UP LOCAL SCOPE
 
 	var settings = {
 		quiz: {},
@@ -124,6 +124,8 @@ var TakeQuiz = function() {
 
 	var getHtmlComponents = {};
 
+	// SET UP REUSABLE COMPONANTS
+
 	// todo: should make this more general, or use ids
 	var _setHtmlComponents = function(html) {
 		for (var i = 0; i < html.length; i++) {
@@ -136,18 +138,13 @@ var TakeQuiz = function() {
 		}
 	};
 
-	var _updateQuizProgress = function() {
-		getHtmlComponents['current-stage'].textContent = currentStage.position;
-		getHtmlComponents['no-of-stages'].textContent = settings.quizLength;
-	}
-
-
 	var elSetup = {
 		nextButton: function() {
 			var nextButton = getHtmlComponents.next;
 			nextButton.addEventListener('click', _nextQuestion, false);
 		}
 	};
+
 
 	// This creates the .answer html containers
 	// http://stackoverflow.com/questions/18534314/reuse-elements-of-html
@@ -169,50 +166,39 @@ var TakeQuiz = function() {
 		}
 	};
 
-	var init = function(id) {
+	// SET UP QUIZ
+
+
+	var init = function(id, player) {
 		_setQuiz(id);
-	};
-
-	var _checkIfAnswerCorrect = function(event) {
-
-		// We attach el to parent ('.answers'), 
-		// el bubble down
-		// however we make sure 
-		if (event.target.className === 'answer') {
-			if (parseInt(event.target.getAttribute('data-id')) === parseInt(currentStage.currentCorrectAnswer)) {
-				// Add the points one to the total points
-				settings.points += currentStage.points;
-				event.target.className += ' correct';
-				console.log('Right');
-			} else {
-				event.target.className += ' incorrect';
-				console.log('Wrong');
-			}
-
-			// remove el so clicking it doesn't so anything anymore
-			this.removeEventListener('click', _checkIfAnswerCorrect, false);
-			// Update Points
-			getHtmlComponents.points.textContent = settings.points;
-		}
-		
+		settings.player = player;
 	};
 
 	var _setQuiz = function(id) {
-		// is given quiz ID
+		// send and get quiz from DB
 		database.ref('/quiz/' + id).once('value').then(function(snapshot) {
 			console.log(snapshot.val());
 			settings.quiz = snapshot.val();
+
+			// set up quiz
 			settings.quizLength = settings.quiz.quizStages.length;
 			_setHtmlComponents(settings.htmlComponents);
 			elSetup.nextButton();
 		}).then(function() {
-			// do something smarter than this
-			doThis();
+			// run the quiz
+			myQuiz.runQuiz();
 		});
 		// would make a call to the database and grab the correct quiz 
 		// for testing there's only one quiz to take 
 		
 	};
+
+	var runQuiz = function() {
+		_setQuizStage();
+		_paintQuizStage();
+	};
+
+	// MANAGE QUIZ STAGES
 
 	var _setQuizStage = function() {
 		var thisStage = settings.quiz.quizStages;
@@ -227,20 +213,15 @@ var TakeQuiz = function() {
 		}
 	};
 
-	var _setCorrectAnswer = function(answers) {
-		for (var i = 0; i < answers.length; i++) {
-			if (answers[i].isCorrect === true) {
-				return answers[i].id;
-			}
-		}
-	};
-
 	// todo: review, and break up if needed
 	var _paintQuizStage = function() {
 		var domAnswersContainer = getHtmlComponents.answers;
 		var thisQuestion = currentStage.currentQuestion;
+
+		// add the question
 		getHtmlComponents.question.textContent = thisQuestion.question;
 		_updateQuizProgress();
+
 		// if previous answers remove them
 		var answers = document.querySelectorAll(".answer");
 		if (answers.length) {
@@ -268,13 +249,43 @@ var TakeQuiz = function() {
 		}
 	};
 
-	var _updatePoints = function() {
+	// QUIZ ACTIONS
 
+	var _updateQuizProgress = function() {
+		getHtmlComponents['current-stage'].textContent = currentStage.position;
+		getHtmlComponents['no-of-stages'].textContent = settings.quizLength;
+	}
+
+	var _checkIfAnswerCorrect = function(event) {
+
+		// We attach el to parent ('.answers'), 
+		// el bubble down
+		// however we make sure 
+		if (event.target.className === 'answer') {
+			if (parseInt(event.target.getAttribute('data-id')) === parseInt(currentStage.currentCorrectAnswer)) {
+				// Add the points one to the total points
+				settings.points += currentStage.points;
+				event.target.className += ' correct';
+				console.log('Right');
+			} else {
+				event.target.className += ' incorrect';
+				console.log('Wrong');
+			}
+
+			// remove el so clicking it doesn't so anything anymore
+			this.removeEventListener('click', _checkIfAnswerCorrect, false);
+			// Update Points
+			getHtmlComponents.points.textContent = settings.points;
+		}
+		
 	};
 
-	var addPlayer = function(player) {
-		settings.player = player;
-		getHtmlComponents.player.textContent = settings.player;
+	var _setCorrectAnswer = function(answers) {
+		for (var i = 0; i < answers.length; i++) {
+			if (answers[i].isCorrect === true) {
+				return answers[i].id;
+			}
+		}
 	};
 
 	var _nextQuestion = function() {
@@ -284,7 +295,7 @@ var TakeQuiz = function() {
 		// is current stage + 1 more than quiz stages allowed?
 		if (currentStage.position === settings.quizLength) {
 			console.log('Stop quiz');
-			endQuiz();
+			_endQuiz();
 		} else {
 			currentStage.position += 1;
 			_setQuizStage();
@@ -292,24 +303,25 @@ var TakeQuiz = function() {
 		}
 	};
 
-	var _manageQuizState = function() {
-		// get how many quiz stages
-		// get current quiz stage 
-
-		// next question el
-
-		// start quiz
-	};
-
-	var showQuiz = function() {
-		_setQuizStage();
-		_paintQuizStage();
-	};
-
-	var endQuiz = function() {
-		// remove button
+	var _endQuiz = function() {
+		// todo: send score data to database
 		getHtmlComponents.next.textContent = 'Complete quiz';
 	}
+
+	var _sendScore = function() {
+		var complete = {
+			score: settings.score,
+			player: settings.player
+		}
+	}
+
+	// PUBLIC APIs
+
+	var addPlayer = function(player) {
+		settings.player = player;
+		getHtmlComponents.player.textContent = settings.player;
+	};
+
 
 	// for debugging
 	var restartQuiz = function() {
@@ -326,7 +338,7 @@ var TakeQuiz = function() {
 
 	return {
 		init: init, // init quiz
-		showQuiz: showQuiz,
+		runQuiz: runQuiz,
 		addPlayer: addPlayer,
 		restartQuiz: restartQuiz,
 	};
@@ -340,13 +352,7 @@ var SetQuiz = function() {
 var myQuiz = TakeQuiz();
 
 // Pass Quiz a quiz
-myQuiz.init('quiz/-KVX4PQehuonYO_dA4hG');
+myQuiz.init('-KVb2_a2C21II5ptjsSa', 'Tom');
 
-function doThis() {
-	myQuiz.addPlayer('Tom');
-	myQuiz.showQuiz();
-	myQuiz.restartQuiz();
-
-}
 // User clicks Start Quiz
 

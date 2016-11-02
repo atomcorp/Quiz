@@ -79,13 +79,27 @@ var quiz = {
 	]
 }; 
 
+
 // returns the 
 // database.ref('/quiz/quiz/-KVX4PQehuonYO_dA4hG').once('value').then(function(snapshot) {
 // 	console.log(snapshot.val());
 // });
 
-// Get a key for a new Post
-// var newKey = firebase.database().ref('/quiz').push().key;
+// This works
+// var database = firebase.database();
+// // Get a key for a new Post
+// var newKey = database.ref().push().key;
 // var updates = {};
 // updates['/quiz/' + newKey] = quiz;
-// database.ref('/quiz').update(updates);
+// database.ref().update(updates);
+
+// var database = firebase.database();
+// var complete = {
+// 	score: 10,
+// 	player: 'Tom',
+// 	complete: true
+// }
+
+// var updates = {};
+// updates['/scores/' + '123456789'] = complete;
+// database.ref().update(updates);
