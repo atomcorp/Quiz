@@ -10,7 +10,6 @@ var database = firebase.database();
 "use strict";
 
 var quizJSON = {
-	id: 1,
 	quizStages: [
 		{
 			quizStage: 1,
@@ -105,6 +104,7 @@ var TakeQuiz = function() {
 	// SET UP LOCAL SCOPE
 
 	var settings = {
+		databaseId: '',
 		quiz: {},
 		maxQuizStages: 10,
 		minQuizStages: 1,
@@ -112,7 +112,9 @@ var TakeQuiz = function() {
 		points: 0,
 		// make this use document, find the selectors below
 		htmlComponents: ['points', 'player', 'question', 'answers', 'current-stage', 'no-of-stages', 'next'],
-		player: 'Default'
+		player: 'Default',
+		answerCorrect: 0,
+		answerIncorrect: 0,
 	};
 
 	var currentStage = {
@@ -172,6 +174,7 @@ var TakeQuiz = function() {
 	var init = function(id, player) {
 		_setQuiz(id);
 		settings.player = player;
+		settings.databaseId = id;
 	};
 
 	var _setQuiz = function(id) {
@@ -184,6 +187,7 @@ var TakeQuiz = function() {
 			settings.quizLength = settings.quiz.quizStages.length;
 			_setHtmlComponents(settings.htmlComponents);
 			elSetup.nextButton();
+			addPlayer();
 		}).then(function() {
 			// run the quiz
 			myQuiz.runQuiz();
@@ -266,9 +270,11 @@ var TakeQuiz = function() {
 				// Add the points one to the total points
 				settings.points += currentStage.points;
 				event.target.className += ' correct';
+				settings.answerCorrect += 1;
 				console.log('Right');
 			} else {
 				event.target.className += ' incorrect';
+				settings.answerIncorrect += 1;
 				console.log('Wrong');
 			}
 
@@ -305,20 +311,29 @@ var TakeQuiz = function() {
 
 	var _endQuiz = function() {
 		// todo: send score data to database
+		_sendScore();
 		getHtmlComponents.next.textContent = 'Complete quiz';
 	}
 
 	var _sendScore = function() {
 		var complete = {
-			score: settings.score,
-			player: settings.player
+			score: settings.points,
+			player: settings.player,
+			data: Date.now(),
+			correct: settings.answerCorrect,
+			incorrect: settings.answerIncorrect,
 		}
-	}
+		
+		// Adds to 
+		var newKey = database.ref().push().key;
+		var updates = {};
+		updates['/scores/' + settings.databaseId + '/' + newKey] = complete;
+		database.ref().update(updates);
+	};
 
 	// PUBLIC APIs
 
-	var addPlayer = function(player) {
-		settings.player = player;
+	var addPlayer = function() {
 		getHtmlComponents.player.textContent = settings.player;
 	};
 

@@ -50,3 +50,8 @@ Take an existing quiz:
   - 
   4. User will select an answer
   5. Program will store wether answer is correct or now
+
+  Unit testing: 
+    ☐ Karma (watches stuff)
+    ☐ Jasmine (tetsing framework)
+

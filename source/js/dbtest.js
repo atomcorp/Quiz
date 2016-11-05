@@ -100,6 +100,10 @@ var quiz = {
 // 	complete: true
 // }
 
-// var updates = {};
-// updates['/scores/' + '123456789'] = complete;
-// database.ref().update(updates);
+// var check = function() {
+// 	var updates = {};
+// 	updates['/scores/' + '4'] = complete;
+// 	return database.ref().update(updates);
+// }
+
+// console.log(check().status);

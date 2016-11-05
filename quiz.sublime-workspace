@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"answer",
+				"answerIncorrect"
+			],
+			[
 				"html",
 				"getHtmlComponents"
 			],
@@ -30,10 +34,6 @@
 			[
 				"par",
 				"participant"
-			],
-			[
-				"answer",
-				"answerCorrect"
 			],
 			[
 				"D",
@@ -183,7 +183,7 @@
 			"file": "quiz.todo",
 			"settings":
 			{
-				"buffer_size": 1984,
+				"buffer_size": 2065,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -192,7 +192,7 @@
 			"file": "source/js/quiz.js",
 			"settings":
 			{
-				"buffer_size": 8027,
+				"buffer_size": 8499,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -202,15 +202,6 @@
 			"settings":
 			{
 				"buffer_size": 60,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/js/dbtest.js",
-			"settings":
-			{
-				"buffer_size": 1580,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -229,6 +220,15 @@
 			"settings":
 			{
 				"buffer_size": 1016,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/js/dbtest.js",
+			"settings":
+			{
+				"buffer_size": 1904,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -545,6 +545,21 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"addPlayer",
+			"settings.player",
+			"addPlayer",
+			"player",
+			"addPlayer",
+			"answerdCorrect",
+			"answerIncorrect",
+			"answerdCorrect",
+			"answerdIncorrect",
+			"console",
+			"init",
+			"KVb2_a2C21II5ptjsSa",
+			"runQuiz",
+			"showQuiz",
+			"endQuiz",
 			"console",
 			"init",
 			"myQuiz.init",
@@ -657,22 +672,7 @@
 			"singleUris",
 			"singleList",
 			"thisAlbum",
-			"album",
-			"dataUri",
-			"spotify:track:",
-			"dataUri",
-			"rank",
-			",",
-			"dataUri",
-			"getAlbumData",
-			"top10",
-			"fd746c",
-			"xs",
-			"}",
-			"dataUril",
-			"\"",
-			"'",
-			";\n"
+			"album"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -691,7 +691,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -700,15 +700,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1984,
+						"buffer_size": 2065,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1042,
-								1042
+								1450,
+								1450
 							]
 						],
 						"settings":
@@ -718,10 +718,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -730,15 +730,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8027,
+						"buffer_size": 8499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4288,
-								4288
+								7823,
+								7823
 							]
 						],
 						"settings":
@@ -747,10 +747,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3780.0,
+						"translation.y": 6200.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -766,8 +766,8 @@
 						"selection":
 						[
 							[
-								47,
-								56
+								16,
+								16
 							]
 						],
 						"settings":
@@ -783,34 +783,6 @@
 				},
 				{
 					"buffer": 3,
-					"file": "source/js/dbtest.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1580,
-								1580
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1120.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
@@ -835,11 +807,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "source/sass/_start.scss",
 					"semi_transient": false,
 					"settings":
@@ -863,7 +835,35 @@
 						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/js/dbtest.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1904,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1577,
+								1577
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1470.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
