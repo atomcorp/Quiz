@@ -156,7 +156,6 @@ var TakeQuiz = function() {
 			answerContainer.dataset.id = this.config.id;
 			answerContainer.textContent = this.config.text;
 
-			// Should just make one of these, easier to turn off
 			return answerContainer;
 		}
 	};
