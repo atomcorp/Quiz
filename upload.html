@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Upload quiz</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="dist/css.css">
+</head>
+<body>
+	<div class="header">
+		<h1>Quiz</h1>
+	</div>
+
+	<h3>Upload a quiz</h3>
+
+	<div class="upload">
+		<div class="new-quiz">
+			<div class="new-quiz--title">
+				<div class="label">Name your quiz</div>
+				<input type="text" data-watch="new-quiz-title">
+			</div>
+			<div class="new-quiz--stages">
+				<div class="new-quiz--stage">
+					<label for="new-quiz-question">Question</label>
+					<input type="text" data-watch="new-quiz-question" required>
+				</div>
+				<div class="new-quiz--answers">
+					<div class="label">Answers</div>
+					<div class="new-quiz--answer">
+						<input type="text" data-watch="new-quiz-answer">
+						<input type="radio" name="mark-correct-1">
+					</div>
+					<div class="new-quiz--answer">
+						<input type="text" data-watch="new-quiz-answer">
+						<input type="radio" name="mark-correct-1">
+					</div>
+					<div class="new-quiz--answer">
+						<input type="text" data-watch="new-quiz-answer">
+						<input type="radio" name="mark-correct-1">
+					</div>
+					<div class="new-quiz--answer">
+						<input type="text" data-watch="new-quiz-answer">
+						<input type="radio" name="mark-correct-1">
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="submit" id="upload-quiz">
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAETM2A7Ai_XW07wNwSi7I1PuTAURVDrQ8",
+	    authDomain: "quiz-a4dbe.firebaseapp.com",
+	    databaseURL: "https://quiz-a4dbe.firebaseio.com",
+	    storageBucket: "quiz-a4dbe.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	<script src="/dist/js.js"></script>
+</body>
+</html>

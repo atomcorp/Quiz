@@ -51,7 +51,15 @@ Take an existing quiz:
   4. User will select an answer
   5. Program will store wether answer is correct or now
 
-  Unit testing: 
-    ☐ Karma (watches stuff)
-    ☐ Jasmine (tetsing framework)
+Unit testing: 
+  ☐ Karma (watches stuff)
+  ☐ Jasmine (tetsing framework)
+
+Upload Quiz:
+  ☐ Name quiz
+  ☐ repeatable quiz stage fields
+  ☐ add a question
+  ☐ add, upto, 4 answers
+  ☐ select which is correct
+  ☐ submit button
 

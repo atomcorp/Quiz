@@ -1,12 +1,5 @@
 // Tasks
 
-// Upload a Quiz
-
-// Access a Quiz and take it
-// 1. Get 
-
-var database = firebase.database();
-
 "use strict";
 
 var quizJSON = {
@@ -319,7 +312,7 @@ var TakeQuiz = function() {
 		var complete = {
 			score: settings.points,
 			player: settings.player,
-			data: Date.now(),
+			date: Date.now(),
 			correct: settings.answerCorrect,
 			incorrect: settings.answerIncorrect,
 		}
@@ -364,10 +357,10 @@ var SetQuiz = function() {
 };
 
 // Invoke the module
-var myQuiz = TakeQuiz();
+// var myQuiz = TakeQuiz();
 
 // Pass Quiz a quiz
-myQuiz.init('-KVb2_a2C21II5ptjsSa', 'Tom');
+// myQuiz.init('-KVb2_a2C21II5ptjsSa', 'Tom');
 
 // User clicks Start Quiz
 
