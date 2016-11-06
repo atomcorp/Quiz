@@ -15,13 +15,7 @@ var UploadQuiz = function() {
 
 	var setUp = function() {
 		_watchSubmit();
-		var newQuizStage = Object.create(addQuizStage);
-		newQuizStage.createStage();
-		newQuizStage.createQuestion();
-		newQuizStage.createAnswersContainer();
-		newQuizStage.createAnswer();
-		newQuizStage.whatHappend();
-		
+		_watchStageButton();
 	};
 
 	var _getTitle = function() {
@@ -29,7 +23,7 @@ var UploadQuiz = function() {
 		quizContent.title = input[0].value;
 	};
 
-	var addQuizStage = {
+	var createStageElements = {
 
 		config: {
 			answerCount: 0,
@@ -95,13 +89,24 @@ var UploadQuiz = function() {
 
 	};
 
-	var addQuizQuestion = {
+	var _watchStageButton = function() {
+		var button = document.querySelector('[data-watch="add-stage"]');
+		button.addEventListener('click', _addStage, false);
+	}
 
-		createQuestion() {
-
-
-
+	var _addStage = function() {
+		var newQuizStage = Object.create(createStageElements);
+		newQuizStage.createStage();
+		newQuizStage.createQuestion();
+		newQuizStage.createAnswersContainer();
+		for (var i = 0; i < 4; i++) {
+			newQuizStage.createAnswer();
 		}
+		newQuizStage.config.answerCount += 1;
+		var container = document.querySelector('.new-quiz--stages');
+		console.log(newQuizStage.container);
+		container.append(newQuizStage.container)
+
 	}
 
 	var _getQuizStage = function() {
