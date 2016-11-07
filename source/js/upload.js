@@ -23,12 +23,11 @@ var UploadQuiz = function() {
 		quizContent.title = input[0].value;
 	};
 
+	// Simply makes the html for creating stages
 	var createStageElements = {
-
 		config: {
 			answerCount: 0,
 		},
-
 		container: {
 
 		},
@@ -104,26 +103,31 @@ var UploadQuiz = function() {
 		}
 		newQuizStage.config.answerCount += 1;
 		var container = document.querySelector('.new-quiz--stages');
-		console.log(newQuizStage.container);
-		container.append(newQuizStage.container)
+		container.append(newQuizStage.container);
 
 	}
 
-	var _getQuizStage = function() {
-		var tempArray = {};
-		tempArray.answers = [];
-		var questionEl = document.querySelectorAll('[data-watch="new-quiz-question"]');
-		tempArray.value = questionEl[0].value;
-		var answersEl = document.querySelectorAll('[data-watch="new-quiz-answer"]');
+	var _getQuizStages = function() {
 
-		for (var i = 0; i < answersEl.length; i++) {
-			var answerObj = {};
-			answerObj.answer = answersEl[i].value;
-			answerObj.isCorrect = answersEl[i].nextElementSibling.checked;
-			answerObj.id = i;
-			tempArray.answers.push(answerObj);
+		// get how many quiz stages are there?
+		var stageEl = document.querySelectorAll('.new-quiz--stage');
+		for (var i = 0; i < stageEl.length; i++) {
+			var stageContainer = {};
+			stageContainer.answers = [];
+
+			var questionEl = stageEl[i].querySelectorAll('[data-watch="new-quiz-question"]');
+			stageContainer.question = questionEl[0].value;
+			var answersEl = stageEl[i].querySelectorAll('[data-watch="new-quiz-answer"]');
+
+			for (var x = 0; x < answersEl.length; x++) {
+				var answerObj = {};
+				answerObj.answer = answersEl[x].value;
+				answerObj.isCorrect = answersEl[x].nextElementSibling.checked;
+				answerObj.id = x;
+				stageContainer.answers.push(answerObj);
+			}
+			quizContent.quizStages.push(stageContainer);
 		}
-		quizContent.quizStages.push(tempArray);
 	};
 
 	var _watchSubmit = function() {
@@ -132,9 +136,32 @@ var UploadQuiz = function() {
 	};
 
 	var _submitQuiz = function() {
-		_getTitle();
-		_getQuizStage();
-		console.log(quizContent);
+		var promiseQuiz = new Promise(
+			function(resolve, reject) {
+				_getTitle();
+				_getQuizStages();
+				
+				resolve(quizContent);
+			}
+		);
+		promiseQuiz.then(
+			function(val) {
+				var newKey = database.ref().push().key;
+				var updates = {};
+				updates['/quiz/' + newKey] = quizContent;
+				database.ref().update(updates);
+				console.log(newKey);
+			}
+		).catch(
+			function(reason) {
+				console.log('broke', reason);
+			}
+		)
+		// 
+		// 
+		// 
+		// 
+		
 	};
 
 	return {

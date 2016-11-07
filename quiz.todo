@@ -56,10 +56,10 @@ Unit testing:
   ☐ Jasmine (tetsing framework)
 
 Upload Quiz:
-  ☐ Name quiz
-  ☐ repeatable quiz stage fields
-  ☐ add a question
-  ☐ add, upto, 4 answers
-  ☐ select which is correct
-  ☐ submit button
+  ✔ Name quiz @done (16-11-07 21:06)
+  ✔ repeatable quiz stage fields @done (16-11-07 21:06)
+  ✔ add a question @done (16-11-07 21:06)
+  ☐ add answers 2 - 4 (postpone)
+  ✔ select which is correct @done (16-11-07 21:06)
+  ✔ submit button @done (16-11-07 21:06)
 
